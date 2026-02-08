@@ -109,7 +109,7 @@ This research platform exists in **two operational configurations**, each optimi
 
 1. Clone this repository:
 ```bash
-   git clone https://github.com/techchipnet/ESP32-BLE-HID.git
+   git clone https://github.com/Q3hr/BLE-Rubber-Ducky-with-without-Screen.git
 ```
 2. Open `blehid.ino` in Arduino IDE
 3. Select your board and port - ESP32-Dev Module
