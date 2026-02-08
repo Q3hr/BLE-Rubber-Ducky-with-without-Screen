@@ -723,9 +723,10 @@ For educational study of PowerShell obfuscation techniques commonly used in mode
 
 ### ESP32 BLE-HID Projects
 
-**Repository:** 
-[ESP32-BLE-HID](https://github.com/techchipnet/ESP32-BLE-HID) 
-[ESP32-BLE-HID-Touch](https://github.com/techchipnet/ESP32-BLE-HID-TOUCH) 
+**Repository:**
+- [ESP32-BLE-HID](https://github.com/techchipnet/ESP32-BLE-HID)
+- [ESP32-BLE-HID-Touch](https://github.com/techchipnet/ESP32-BLE-HID-TOUCH)
+
 **Author:** [TechChipNet](https://github.com/techchipnet)
 
 **Technical Contributions:**
