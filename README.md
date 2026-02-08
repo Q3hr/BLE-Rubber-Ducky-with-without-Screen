@@ -54,6 +54,10 @@ Unlike traditional USB Rubber Ducky devices requiring physical insertion, this p
 > This platform is strictly for authorized academic malware analysis within university-approved laboratory settings. Unauthorized deployment constitutes illegal computer intrusion.
 
 ---
+  
+<img src="BLE-Rubber-Ducky.jpg" alt="BLE Rubber Ducky" width="600"/>
+
+---
 
 ## 🛠️ Project Variants
 
