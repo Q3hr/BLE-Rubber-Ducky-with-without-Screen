@@ -100,10 +100,11 @@ This research platform exists in **two operational configurations**, each optimi
 4. Search for "ESP32" and install version 2.0.15
 
 #### Required Libraries
-1. ESP32 BLE Keyboard Library:
-   - Download from: https://github.com/T-vK/ESP32-BLE-Keyboard
-   - In Arduino IDE: Sketch -> Include Library -> Add .ZIP Library
-   - Select the downloaded library file
+- **ESP32 BLE Keyboard Library**  
+  🔗 [ESP32-BLE-Keyboard by T-vK](https://github.com/T-vK/ESP32-BLE-Keyboard)  
+  - Arduino IDE: `Sketch → Include Library → Add .ZIP Library`
+  - Import the downloaded `.zip` file
+
 
 #### Installation
 
@@ -111,7 +112,7 @@ This research platform exists in **two operational configurations**, each optimi
 ```bash
    git clone https://github.com/Q3hr/BLE-Rubber-Ducky-with-without-Screen.git
 ```
-2. Open `blehid.ino` in Arduino IDE
+2. Open `blehid.ino` in Arduino IDE "Located at the following path: SRC\Remote BLE Rubber Ducky without Screen\blehid"
 3. Select your board and port - ESP32-Dev Module
 4. Upload the code to your Arduino board
 
@@ -164,6 +165,7 @@ This research platform exists in **two operational configurations**, each optimi
 ### 🎯 Attack Primitives Demonstrated
 
 - **Keystroke Injection:** Automated typing at superhuman speeds
+- **Code Obfuscation:** Obfuscation of Reverse Shell to fool the Windows 10/11 Defender + the AMSI
 - **GUI Manipulation:** Programmatic window navigation and control
 - **Command Execution:** Shell/terminal invocation and scripting
 - **Data Exfiltration:** Simulated credential harvesting and file theft
@@ -234,7 +236,6 @@ This research platform exists in **two operational configurations**, each optimi
 | **TFT Display** | ILI9341 2.4" 320x240 SPI | ❌ | ✅ | Interactive payload selection |
 | **Touch Controller** | Resistive 4-wire | ❌ | ✅ | User input interface |
 | **Trigger Button** | Tactile push-button | ✅ | ❌ | GPIO-based payload execution |
-| **Status LED** | 3mm/5mm LED + 220Ω resistor | ✅ | ✅ | Visual execution feedback |
 | **USB Cable** | Micro-USB to USB-A | ✅ | ✅ | Target connection & power |
 | **Power Supply** | 5V DC (USB-powered) | ✅ | ✅ | System power |
 | **Enclosure** | 3D-printed or project box | Optional | Optional | Physical protection |
@@ -256,12 +257,8 @@ Complete wiring diagrams, pin assignments, and connection tables are documented 
 ```
 📁 SRC/
 ├── Remote BLE Rubber Ducky with Screen/
-│   └── 📊 Connection Excel File/
-│       └── Wiring_Diagram_Touchscreen.xlsx
-│
-└── Remote BLE Rubber Ducky without Screen/
-    └── 📊 ESP32-BLE-HID/
-        └── GPIO_Configuration.xlsx
+   └── 📊 Connection Excel File/
+       └── ESP 32 BLE Connection Schematics.xlsx
 ```
 
 > 📌 **Note:** Pin configurations vary significantly between variants due to SPI display requirements. Consult the appropriate Excel file for your hardware revision before assembly.
@@ -340,7 +337,7 @@ Before flashing, you must prepare the `payload.bin` file from your Ducky Script:
 
 1. **Navigate to binary directory:**
 ```
-   📁 SRC/Remote BLE Rubber Ducky [with/without Screen]/bin Files/
+   📁 SRC/Remote BLE Rubber Ducky [with Screen]/bin Files/
    ├── Boot Loader/         → bootloader.bin
    ├── Partitions/          → partitions.bin
    ├── BLE - HID/           → blehid.bin
@@ -639,14 +636,29 @@ This project is submitted as original academic work for evaluation in the **Malw
 
 ## 📖 References
 
-1. D. Kennedy et al., "Metasploit: The Penetration Tester's Guide," No Starch Press, 2011.
-2. USB Implementers Forum, "Device Class Definition for Human Interface Devices (HID)," Version 1.11, 2001.
-3. Bluetooth SIG, "Bluetooth Core Specification v5.0," December 2016.
-4. K. Hoog and K. Strzempka, "Hacking Exposed Mobile Security Secrets & Solutions," McGraw-Hill, 2013.
-5. Espressif Systems, "ESP32 Technical Reference Manual," Version 4.8, 2023.
-6. NIST SP 800-115, "Technical Guide to Information Security Testing and Assessment," 2008.
-7. MITRE ATT&CK Framework, "T1056 - Input Capture," [Online]. Available: https://attack.mitre.org/techniques/T1056/
-8. C. Herley, "So Long, And No Thanks for the Externalities: The Rational Rejection of Security Advice by Users," NSPW '09, 2009.
+[1] Hak5, "USB Rubber Ducky – Keystroke Injection Attacks," Hak5 LLC, 2022. [Online]. Available: https://shop.hak5.org/products/usb-rubber-ducky. [Accessed: Jan. 2026].
+
+[2] Bluetooth Special Interest Group (SIG), "Bluetooth Low Energy Security," Bluetooth SIG, 2022. [Online]. Available: https://www.bluetooth.com/learn-about-bluetooth/tech-overview/ [Accessed: Jan. 2026].
+
+[3] Espressif Systems, "ESP32 Technical Reference Manual," Espressif Systems, 2023. [Online]. Available: https://documentation.espressif.com/esp32_technical_reference_manual_en.pdf [Accessed: Jan. 2026].
+
+[4] MITRE Corporation, "MITRE ATT&CK® Framework – Input Injection Techniques," MITRE, 2023. [Online]. Available: https://attack.mitre.org/techniques/T1204/ [Accessed: Jan. 2026].
+
+[5] National Institute of Standards and Technology (NIST), Guide to Malware Incident Prevention and Handling, Special Publication 800-83, Gaithersburg, MD, USA, 2014. [Online]. Available: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-83r1.pdf [Accessed: Jan. 2026].
+
+[6] USB Implementers Forum, "Device Class Definition for Human Interface Devices (HID)," Version 1.11, 2001. [Online]. Available: https://www.usb.org/sites/default/files/hid1_11.pdf
+
+[7] NIST Special Publication 800-115, "Technical Guide to Information Security Testing and Assessment," National Institute of Standards and Technology, 2008. [Online]. Available: https://csrc.nist.gov/publications/detail/sp/800-115/final
+
+[9] MITRE ATT&CK Framework, "T1056 - Input Capture," MITRE Corporation. [Online]. Available: https://attack.mitre.org/techniques/T1056/
+
+[9] TechChipNet, "ESP32-BLE-HID Implementation," GitHub Repository, 2024. [Online]. Available: https://github.com/techchipnet
+
+[10] Pwn3rx0, "Obfuscated PowerShell Reverse Shell Techniques," GitHub Repository, 2024. [Online]. Available: https://github.com/Pwn3rx0
+
+[11] Prevention of Electronic Crimes Act (PECA), "The Prevention of Electronic Crimes Act, 2016," Government of Pakistan, 2016. [Online]. Available: https://www.fia.gov.pk/en/laws/
+
+[12] T-vK and Contributors, "ESP32 BLE Keyboard Library," GitHub Repository. [Online]. Available: https://github.com/T-vK/ESP32-BLE-Keyboard
 
 ---
 
@@ -654,7 +666,7 @@ This project is submitted as original academic work for evaluation in the **Malw
 
 ### Obfuscated PowerShell Research
 
-For educational study of PowerShell obfuscation techniques commonly used in modern malware campaigns:
+For educational study of PowerShell obfuscation techniques commonly used in this Project:
 
 **Repository:** [Obfuscated PS Reverse Shell](https://github.com/Pwn3rx0/Obfuscated-PS-Reverse-Shell)
 
@@ -668,14 +680,61 @@ For educational study of PowerShell obfuscation techniques commonly used in mode
 
 ---
 
-<div align="center">
+## 👏 Acknowledgments & Credits
 
-### 🎓 Academic Research Project
+This research project builds upon the foundational work and open-source contributions of the cybersecurity community. We extend our gratitude to the following contributors:
 
-**Department of Computer Science**  
-**Malware Analysis & Embedded Security Laboratory**
+### Project Framework & Implementation
+**[TechChipNet](https://github.com/techchipnet)**  
+- ESP32 BLE-HID implementation architecture
+- Hardware integration methodologies
+- Embedded firmware development
+
+### Obfuscation Research & Techniques
+**[Pwn3rx0](https://github.com/Pwn3rx0)**  
+- PowerShell obfuscation techniques
+- Script-based evasion methodologies
+- Educational malware analysis resources
+
+### Open Source Libraries & Tools
+- **ESP32 BLE Keyboard Library** – T-vK and contributors
+- **ESP-IDF Framework** – Espressif Systems
+- **Arduino Core for ESP32** – Arduino Community
+- **SPIFFS File System** – Espressif Systems
 
 ---
+
+## 🔗 Additional Educational Resources
+
+### Obfuscated PowerShell Research
+
+For educational study of PowerShell obfuscation techniques commonly used in modern malware campaigns:
+
+**Repository:** [Obfuscated PS Reverse Shell](https://github.com/Pwn3rx0/Obfuscated-PS-Reverse-Shell)  
+**Author:** [Pwn3rx0](https://github.com/Pwn3rx0)
+
+> ⚠️ **Academic Use Only:** This resource is provided strictly for understanding detection and defense mechanisms against obfuscated scripts. Unauthorized deployment violates computer fraud laws.
+
+**Research Applications:**
+- Signature evasion analysis
+- AMSI (Anti-Malware Scan Interface) bypass techniques
+- Script-based attack detection algorithm development
+- Incident response training scenarios
+
+### ESP32 BLE-HID Projects
+
+**Repository:** [ESP32-BLE-HID](https://github.com/techchipnet/ESP32-BLE-HID)  
+**Author:** [TechChipNet](https://github.com/techchipnet)
+
+**Technical Contributions:**
+- BLE keyboard emulation implementation
+- GPIO-based trigger mechanisms
+- Firmware architecture and deployment strategies
+
+---
+
+
+<div align="center">
 
 **BLE Rubber Ducky** - *Remote HID-Based Malware Injection Framework*
 
@@ -689,21 +748,6 @@ For educational study of PowerShell obfuscation techniques commonly used in mode
 [![Semester](https://img.shields.io/badge/Semester-5th-green.svg)](#)
 [![Project](https://img.shields.io/badge/Type-Research_Project-orange.svg)](#)
 
----
-
 **"Poke around and find out!"**
-
----
-
-**Developed for Educational Purposes**  
-*Authorized University Lab Use Only*
-
----
-
-![Made with ESP32](https://img.shields.io/badge/Made%20with-ESP32-red?style=flat-square&logo=espressif)
-![Powered by BLE](https://img.shields.io/badge/Powered%20by-BLE-blue?style=flat-square&logo=bluetooth)
-![Academic Research](https://img.shields.io/badge/Academic-Research-green?style=flat-square&logo=academia)
-
-**© 2026 | Malware Analysis Research Initiative**
 
 </div>
