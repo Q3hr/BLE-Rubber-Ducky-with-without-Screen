@@ -79,6 +79,49 @@ This research platform exists in **two operational configurations**, each optimi
 - HID keyboard emulation via USB CDC ACM
 - Status feedback through onboard LED
 
+#### Hardware Connections
+1. Connect one jumper wire from GND pin
+2. Connect other jumper wires to GPIO pins: as your requirement.
+   - Trigger 1: GPIO 16
+   - Trigger 2: GPIO 17
+   - Trigger 3: GPIO 18
+3. When you want to activate a trigger, touch both jumper wires
+
+#### Software Requirements
+- [Arduino IDE](https://www.arduino.cc/en/software/)
+
+#### Arduino IDE Setup
+1. Open Arduino IDE Preferences
+2. Add ESP32 board URL in Additional Board Manager URLs:
+```
+   https://espressif.github.io/arduino-esp32/package_esp32_index.json
+```
+3. Go to Tools -> Board Manager
+4. Search for "ESP32" and install version 2.0.15
+
+#### Required Libraries
+1. ESP32 BLE Keyboard Library:
+   - Download from: https://github.com/T-vK/ESP32-BLE-Keyboard
+   - In Arduino IDE: Sketch -> Include Library -> Add .ZIP Library
+   - Select the downloaded library file
+
+#### Installation
+
+1. Clone this repository:
+```bash
+   git clone https://github.com/techchipnet/ESP32-BLE-HID.git
+```
+2. Open `blehid.ino` in Arduino IDE
+3. Select your board and port - ESP32-Dev Module
+4. Upload the code to your Arduino board
+
+#### Usage
+
+1. Power up your Arduino board
+2. The device will start advertising as a BLE HID device
+3. Connect to the device from your computer/tablet/phone's Bluetooth settings
+4. Activate the trigger
+
 ---
 
 ### **Variant 2: Remote BLE Rubber Ducky WITH Touchscreen** 📱
@@ -238,11 +281,54 @@ Complete wiring diagrams, pin assignments, and connection tables are documented 
 
 ---
 
+## 🚀 Payload Configuration (Ducky Script Syntax)
+
+You can write your payload in the `payload.txt` file using a simple scripting language.
+
+* **Commands:** `PRESS`, `TYPE`, `DELAY`, `ENTER`
+* **Separator:** Separate each command with a semicolon (`;`).
+
+| Command | Example           | Description                                    |
+| :------ | :---------------- | :--------------------------------------------- |
+| `PRESS` | `PRESS GUI,r`     | Presses one or more keys simultaneously.       |
+| `TYPE`  | `TYPE Hello World`| Types the given text.                          |
+| `DELAY` | `DELAY 1000`      | Pauses for the given number of milliseconds (1000ms = 1s). |
+| `ENTER` | `ENTER`           | Presses the Enter key.                         |
+
+**Supported Keywords:** `GUI` (or `WINDOWS`), `CTRL`, `ALT`, `SHIFT`, `ENTER`, `ESC`, `BACKSPACE`, `TAB`, `CAPS_LOCK`, `DELETE`, `INSERT`, `HOME`, `END`, `PAGE_UP`, `PAGE_DOWN`, `UP`, `DOWN`, `LEFT`, `RIGHT`, `SPACE`, and `F1` through `F12`.
+
+---
+
 ## 💾 Firmware Deployment & Flashing
 
 ### Pre-Compiled Binary Method (Recommended)
 
 This project uses **pre-compiled BIN files** to eliminate Arduino IDE dependencies and ensure reproducible deployments across different research environments.
+
+#### 🔧 Payload Binary Preparation
+
+Before flashing, you must prepare the `payload.bin` file from your Ducky Script:
+
+1. **Create your payload script:**
+   - Write your Ducky Script commands in `payload.txt`
+   - Place the file in a `data/` directory
+
+2. **Generate payload binary:**
+   
+   Open terminal and run the following command to create the `payload.bin` image:
+```bash
+   mkspiffs -c data -b 4096 -p 256 -s 0x160000 payload.bin
+```
+
+   **Parameters Explained:**
+   - `-c data` – Source directory containing payload.txt
+   - `-b 4096` – Block size (4KB)
+   - `-p 256` – Page size
+   - `-s 0x160000` – Total partition size (1.375 MB)
+
+3. **Verify output:**
+   - Confirm `payload.bin` is created successfully
+   - File size should not exceed partition size
 
 #### 🌐 Web-Based Flash Tool
 
@@ -258,7 +344,7 @@ This project uses **pre-compiled BIN files** to eliminate Arduino IDE dependenci
    ├── Boot Loader/         → bootloader.bin
    ├── Partitions/          → partitions.bin
    ├── BLE - HID/           → blehid.bin
-   └── Payload Files/       → payload.bin
+   └── Payload Files/       → payload.bin (generated above)
 ```
 
 2. **Connect ESP32 via USB** (enter bootloader mode if required)
@@ -486,6 +572,12 @@ This research platform is classified as a **dual-use technology** with legitimat
 - **Computer Misuse Act 1990** – United Kingdom  
 - **Criminal Code Section 342.1** – Canada  
 - **Cybercrime Act 2001** – Australia
+- **Prevention of Electronic Crimes Act (PECA) 2016** – Pakistan
+  - Section 3: Unauthorized access to information systems
+  - Section 4: Unauthorized copying or transmission of data
+  - Section 5: Unauthorized modification of information systems
+  - Section 9: Malicious code and cyber terrorism
+- **Electronic Transactions Ordinance 2002** – Pakistan (Sections 36-40)
 
 ### Authorized Use Cases (ONLY)
 
@@ -558,12 +650,48 @@ This project is submitted as original academic work for evaluation in the **Malw
 
 ---
 
+## 🔗 Additional Educational Resources
+
+### Obfuscated PowerShell Research
+
+For educational study of PowerShell obfuscation techniques commonly used in modern malware campaigns:
+
+**Repository:** [Obfuscated PS Reverse Shell](https://github.com/Pwn3rx0/Obfuscated-PS-Reverse-Shell)
+
+> ⚠️ **Academic Use Only:** This resource is provided strictly for understanding detection and defense mechanisms against obfuscated scripts. Unauthorized deployment violates computer fraud laws.
+
+**Research Applications:**
+- Signature evasion analysis
+- AMSI (Anti-Malware Scan Interface) bypass techniques
+- Script-based attack detection algorithm development
+- Incident response training scenarios
+
+---
+
 <div align="center">
 
 ### 🎓 Academic Research Project
 
 **Department of Computer Science**  
 **Malware Analysis & Embedded Security Laboratory**
+
+---
+
+**BLE Rubber Ducky** - *Remote HID-Based Malware Injection Framework*
+
+**🎓 Developed for Advanced Cybersecurity Education**
+
+*Enhancing network defense capabilities through hands-on technical research*
+
+[![University](https://img.shields.io/badge/Institution-University_of_Wah-blue.svg)](#)
+[![Department](https://img.shields.io/badge/Department-Cybersecurity-purple.svg)](#)
+[![Course](https://img.shields.io/badge/Course-Malware_Analysis-teal.svg)](#)
+[![Semester](https://img.shields.io/badge/Semester-5th-green.svg)](#)
+[![Project](https://img.shields.io/badge/Type-Research_Project-orange.svg)](#)
+
+---
+
+**"Poke around and find out!"**
 
 ---
 
